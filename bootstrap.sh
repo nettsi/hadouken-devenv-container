@@ -87,4 +87,15 @@ apt-get install -y sudo \
 # Clean up
 apt-get autoremove -y \
 && apt-get clean -y \
-&& rm -rf /var/lib/apt/lists/* 
+&& rm -rf /var/lib/apt/lists/*
+
+git clone --depth=1 -- https://github.com/magicmonty/bash-git-prompt.git /home/vscode/.bash-git-prompt && \
+cat <<EOF >> /home/vscode/.bashrc 
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then 
+    GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_THEME=Crunch
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi
+EOF
+
+
