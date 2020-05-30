@@ -91,10 +91,10 @@ apt-get autoremove -y \
 
 git clone --depth=1 -- https://github.com/magicmonty/bash-git-prompt.git /home/vscode/.bash-git-prompt && \
 cat <<EOF >> /home/vscode/.bashrc 
-if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then 
+if [ -f "/home/vscode/.bash-git-prompt/gitprompt.sh" ]; then 
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_THEME=Crunch
-    source $HOME/.bash-git-prompt/gitprompt.sh
+    source /home/vscode/.bash-git-prompt/gitprompt.sh
 fi
 EOF
 
