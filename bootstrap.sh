@@ -93,6 +93,7 @@ git clone --depth=1 -- https://github.com/magicmonty/bash-git-prompt.git /home/v
 cat <<EOF >> /home/vscode/.bashrc 
 if [ -f "/home/vscode/.bash-git-prompt/gitprompt.sh" ]; then 
     GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_FETCH_REMOTE_STATUS=0 # (mgilor): Enabling it causes some weird loop on ssh authenticity dialog, rendering the shell useless.
     GIT_PROMPT_THEME=Crunch
     source /home/vscode/.bash-git-prompt/gitprompt.sh
 fi
