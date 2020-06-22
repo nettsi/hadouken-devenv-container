@@ -15,7 +15,7 @@
 FROM debian:sid-slim
 
 # Labels
-LABEL version="1.0" maintainer="Mustafa Kemal Gılor <mgilor@nettsi.com>" license="Apache 2.0"
+LABEL version="1.0.3" maintainer="Mustafa Kemal Gılor <mgilor@nettsi.com>" license="Apache 2.0"
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
