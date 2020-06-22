@@ -59,6 +59,8 @@ apt_package_list=(
     lcov gcovr
     # Documentation & graphing
     doxygen doxygen-doxyparse graphviz
+    # Miscallenaous utilities
+    bash-completion
 )
 
 # Packages to be installed via pip
@@ -99,4 +101,10 @@ if [ -f "/home/vscode/.bash-git-prompt/gitprompt.sh" ]; then
 fi
 EOF
 
+# Remove existing symlinks
+sudo rm /usr/bin/gcc 2>/dev/null || true
+sudo rm /usr/bin/g++ 2>/dev/null || true
 
+# Create new symlinks 
+sudo ln -sf /usr/bin/g++-10 /usr/bin/g++
+sudo ln -sf /usr/bin/gcc-10 /usr/bin/gcc
