@@ -59,6 +59,8 @@ apt_package_list=(
     lcov gcovr
     # Documentation & graphing
     doxygen doxygen-doxyparse graphviz
+    # Miscallenaous utilities
+    bash-completion
 )
 
 # Packages to be installed via pip
