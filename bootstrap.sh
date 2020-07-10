@@ -104,7 +104,9 @@ EOF
 # Remove existing symlinks
 sudo rm /usr/bin/gcc 2>/dev/null || true
 sudo rm /usr/bin/g++ 2>/dev/null || true
+sudo rm /usr/bin/gcov 2>/dev/null || true
 
 # Create new symlinks 
 sudo ln -sf /usr/bin/g++-10 /usr/bin/g++
 sudo ln -sf /usr/bin/gcc-10 /usr/bin/gcc
+sudo ln -sf /usr/bin/gcov-10 /usr/bin/gcov
