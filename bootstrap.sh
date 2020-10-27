@@ -96,7 +96,7 @@ cat <<EOF >> /home/vscode/.bashrc
 if [ -f "/home/vscode/.bash-git-prompt/gitprompt.sh" ]; then 
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_FETCH_REMOTE_STATUS=0 # (mgilor): Enabling it causes some weird loop on ssh authenticity dialog, rendering the shell useless.
-    GIT_PROMPT_THEME=Crunch
+    # GIT_PROMPT_THEME=Crunch # (mgilor): This theme causes terminal input to loop on same line
     source /home/vscode/.bash-git-prompt/gitprompt.sh
 fi
 EOF
