@@ -134,4 +134,4 @@ image: nettsi/hadouken:latest
 
 ## License
 
-This project is licensed under MIT license. See LICENSE file for details.
+This project is licensed under Apache 2.0 license. See LICENSE file for details.
