@@ -71,6 +71,7 @@ image: nettsi/hadouken:latest
 | :-----------------: | :---------------------------------------------------: | :-----------: | :----------: |
 |         git         |  fast, scalable, distributed revision control system  | >= 1:2.26.2-1 |   >= v1.0    |
 |      git-flow       | Git extension to provide a high-level branching model |  >= 1.12.3-1  |   >= v1.0    |
+|      git-lfs        | Git extension to large file storage support |  >= 2.12.0 |   >= v1.0    |
 
 ### Script Interpreters
 
@@ -102,11 +103,10 @@ image: nettsi/hadouken:latest
 
 ### Unit testing/mocking/benchmarking
 
-| Debian package name |                    Description                    |   Version   | Available in |
+| Conan package name |                    Description                    |   Version   | Available in |
 | :-----------------: | :-----------------------------------------------: | :---------: | :----------: |
-|    libgtest-dev     |   Google's framework for writing C++ unit tests   | >= 1.10.0-3 |   >= v1.0    |
-|    libgmock-dev     |   Google's framework for writing C++ mock code    | >= 1.10.0-3 |   >= v1.0    |
-|  libbenchmark-dev   | Microbenchmark support library, development files | >= 1.5.0-4  |   >= v1.0    |
+|    gtest     |   Google's framework for writing C++ unit tests (also provides gmock)   | >= 1.10.0 |   >= v2.0    |
+|    benchmark     |   Microbenchmark support library, development files     | >= 1.5.2  |   >= v2.0    |
 
 ### Code coverage analysis
 
@@ -120,7 +120,6 @@ image: nettsi/hadouken:latest
 | Debian package name |                         Description                          |   Version   | Available in |
 | :-----------------: | :----------------------------------------------------------: | :---------: | :----------: |
 |       doxygen       | Documentation system for C, C++, Java, Python and other languages | >= 1.8.17-1 |   >= v1.0    |
-|    doxygen-latex    |  Adds latex format support for doxygen document generation   | >= 1.8.17-1 |   >= v1.0    |
 |  doxygen-doxyparse  |      multi-language source code parser based on Doxygen      | >= 1.8.17-1 |   >= v1.0    |
 |      graphviz       |               rich set of graph drawing tools                | >= 2.42.2-4 |   >= v1.0    |
 
