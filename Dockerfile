@@ -29,6 +29,7 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 COPY bootstrap.sh /scripts/
+COPY .conan/ /scripts/.conan
 
 # Configure apt and install packages
 RUN chmod +x /scripts/bootstrap.sh
@@ -37,3 +38,6 @@ RUN /scripts/bootstrap.sh
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
+
+# Switch to non-root user
+USER $USER_UID
