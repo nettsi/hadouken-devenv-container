@@ -30,9 +30,10 @@ readonly apt_command='apt-get'
 readonly apt_args='-y install --no-install-recommends'
 readonly pip_command='pip3'
 readonly pip_args='install'
+readonly conan_command='conan'
 
 # Packages to be installed via apt
-# TODO(mgilor): In order to save space, it might be a good idead to separate these tools 
+# TODO(mgilor): In order to save space, it might be a good idea to separate these tools 
 # to their own containers, then layer them as needed (make them opt-in).
 apt_package_list=(
     # Prerequisites
@@ -53,8 +54,6 @@ apt_package_list=(
     clang-format-10 clang-tidy-10 iwyu cppcheck
     # Debugging/tracing
     valgrind 
-    # Install test framework & benchmark 
-    libgtest-dev libgmock-dev libbenchmark-dev
     # Install code coverage
     lcov gcovr
     # Documentation & graphing
@@ -91,13 +90,22 @@ apt-get autoremove -y \
 && apt-get clean -y \
 && rm -rf /var/lib/apt/lists/*
 
-git clone --depth=1 -- https://github.com/magicmonty/bash-git-prompt.git /home/vscode/.bash-git-prompt && \
-cat <<EOF >> /home/vscode/.bashrc 
-if [ -f "/home/vscode/.bash-git-prompt/gitprompt.sh" ]; then 
+# Switch to non-root user
+su - $USERNAME
+
+# Install conan packages (build mode: debug, compiler: gcc)
+$conan_command install -pr /scripts/.conan/profile_gcc_debug /scripts/.conan -if=/tmp/conan_dbg --build=missing
+# Install conan packages (build mode: release w/ debug information, compiler: gcc)
+$conan_command install -pr /scripts/.conan/profile_gcc_relwithdbginfo /scripts/.conan -if=/tmp/conan_rl --build=missing
+
+# Install "bash git prompt"
+git clone --depth=1 -- https://github.com/magicmonty/bash-git-prompt.git /home/$USERNAME/.bash-git-prompt && \
+cat <<EOF >> /home/$USERNAME/.bashrc 
+if [ -f "/home/$USERNAME/.bash-git-prompt/gitprompt.sh" ]; then 
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_FETCH_REMOTE_STATUS=0 # (mgilor): Enabling it causes some weird loop on ssh authenticity dialog, rendering the shell useless.
     # GIT_PROMPT_THEME=Crunch # (mgilor): This theme causes terminal input to loop on same line
-    source /home/vscode/.bash-git-prompt/gitprompt.sh
+    source /home/$USERNAME/.bash-git-prompt/gitprompt.sh
 fi
 EOF
 
@@ -105,8 +113,13 @@ EOF
 sudo rm /usr/bin/gcc 2>/dev/null || true
 sudo rm /usr/bin/g++ 2>/dev/null || true
 sudo rm /usr/bin/gcov 2>/dev/null || true
+sudo rm /usr/bin/python 2>/dev/null || true
 
 # Create new symlinks 
 sudo ln -sf /usr/bin/g++-10 /usr/bin/g++
 sudo ln -sf /usr/bin/gcc-10 /usr/bin/gcc
 sudo ln -sf /usr/bin/gcov-10 /usr/bin/gcov
+sudo ln -sf /usr/bin/python3 /usr/bin/python
+
+# Clean all temporary files
+sudo rm -rf /tmp/*
