@@ -52,8 +52,10 @@ apt_package_list=(
     python3 python3-pip
     # Install static analyzers, formatting, tidying,
     clang-format-10 clang-tidy-10 iwyu cppcheck
+    # Unit test, mock and benchmark
+    libgtest-dev libgmock-dev libbenchmark-dev
     # Debugging/tracing
-    valgrind 
+    valgrind
     # Install code coverage
     lcov gcovr
     # Documentation & graphing
