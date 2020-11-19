@@ -67,6 +67,7 @@ apt_package_list=(
 # Packages to be installed via pip
 pip_package_list=(
     conan
+    requests
 )
 
 apt-get update \
