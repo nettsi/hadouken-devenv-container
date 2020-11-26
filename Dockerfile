@@ -30,7 +30,6 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 COPY bootstrap.sh /scripts/
-COPY .conan/ /scripts/.conan
 
 # Configure apt and install packages
 RUN chmod +x /scripts/bootstrap.sh
